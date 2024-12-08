@@ -5,7 +5,7 @@ Lista de estudos para a matéria Programação de Sistemas para Internet, utiliz
 ## Principais difenças entre Sessões e Cookies
 
 * Armazenamento:
-    *Cookies armazenam os dados diretamente no navegador.
+    * Cookies armazenam os dados diretamente no navegador.
     * Sessions armazenam os dados no servidor, e o navegador guarda apenas a chave (ID) da sessão.
 * Segurança:
     * Cookies são acessíveis ao cliente e podem ser modificados, a menos que sejam criptografados ou assinados.
