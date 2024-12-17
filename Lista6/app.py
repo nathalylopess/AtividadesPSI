@@ -1,15 +1,39 @@
 from flask import Flask, render_template, redirect, request, session, url_for, make_response
+from init_db import criar_banco, inserir_usuario, verificar_usuario
 
 app = Flask(__name__)
 app.secret_key='ultramegadificil'
 
-@app.route('/', methods=['GET','POST'])
-def login():
+criar_banco()
+
+@app.route('/', methods=['POST', 'GET'])
+def cadastro():
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
 
-        if username == 'admin' and password == 'senha123':
+        inserir_usuario(username,password)
+
+        session['username'] = username
+        print(session['username'])
+        resposta = make_response(redirect(url_for('dashboard')))
+        resposta.set_cookie('username', username, max_age=60*60*24)
+        print('Cadastrado com sucesso!')
+        return resposta
+
+    else:
+        return render_template('index.html')
+
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        if verificar_usuario(username) == True:
             session['username'] = username
             """
             Esse trecho de código cria uma sessão no servidor com os dados do usuário fornecidos
@@ -47,7 +71,7 @@ def dashboard():
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('username', None) #Altera a sessão com a chave username para None (equivalente a "vazio")
-    resposta = make_response(redirect(url_for('login')))
+    resposta = make_response(redirect(url_for('cadastro')))
     resposta.set_cookie('username', '', max_age=0)#Substitui o cookie antigo por um vazio, com tempo maximo zero, ou seja, ele será excluído.
     return resposta
 
