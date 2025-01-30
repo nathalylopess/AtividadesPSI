@@ -1,0 +1,21 @@
+<!-- templates/veiculos.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Veículos</title>
+</head>
+<body>
+    <h1>Veículos</h1>
+    <form method="post">
+        Modelo: <input type="text" name="modelo" required>
+        Placa: <input type="text" name="placa" required>
+        <button type="submit">Adicionar Veículo</button>
+    </form>
+    <ul>
+        {% for veiculo in veiculos %}
+            <li>{{ veiculo.modelo }} - {{ veiculo.placa }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>

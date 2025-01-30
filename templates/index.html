@@ -1,42 +1,15 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudante</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>Locadora de Veículos</title>
 </head>
 <body>
-    <h1 style="align-content: center;">Crud estudantes</h1>
-    <div class="container">
-        <div class="col-xs-12">
-            <a href="/add">Adicionar estudante</a>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Idade</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for e in estudantes%}
-                            <tr>
-                                <td>{{e.nome}}</td>
-                                <td>{{e.idade}}</td>
-                                <td>
-                                    <a href="/edit/{{e.id}}">Editar</a> | 
-                                    <a href="/delete/{{e.id}}">Excluir</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    <h1>Bem-vindo à Locadora de Veículos</h1>
+    <ul>
+        <li><a href="/clientes">Gerenciar Clientes</a></li>
+        <li><a href="/veiculos">Gerenciar Veículos</a></li>
+        <li><a href="/locacoes">Gerenciar Locações</a></li>
+    </ul>
 </body>
 </html>

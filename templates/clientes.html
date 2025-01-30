@@ -1,0 +1,21 @@
+<!-- templates/clientes.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clientes</title>
+</head>
+<body>
+    <h1>Clientes</h1>
+    <form method="post">
+        Nome: <input type="text" name="nome" required>
+        Telefone: <input type="text" name="telefone" required>
+        <button type="submit">Adicionar Cliente</button>
+    </form>
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nome }} - {{ cliente.telefone }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>

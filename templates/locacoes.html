@@ -1,0 +1,32 @@
+<!-- templates/locacoes.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Locações</title>
+</head>
+<body>
+    <h1>Locações</h1>
+    <form method="post">
+        Cliente:
+        <select name="cliente_id">
+            {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">{{ cliente.nome }}</option>
+            {% endfor %}
+        </select>
+        Veículo:
+        <select name="veiculo_id">
+            {% for veiculo in veiculos %}
+                <option value="{{ veiculo.id }}">{{ veiculo.modelo }}</option>
+            {% endfor %}
+        </select>
+        Data: <input type="text" name="data_locacao" required>
+        <button type="submit">Adicionar Locação</button>
+    </form>
+    <ul>
+        {% for locacao in locacoes %}
+            <li>{{ locacao.cliente.nome }} alugou {{ locacao.veiculo.modelo }} em {{ locacao.data_locacao }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>
